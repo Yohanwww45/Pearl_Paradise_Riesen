@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buchung – Pearl Paradise Reisen</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+  <!-- Slim brand bar -->
+  <div class="bk-top">
+    <div class="bk-container bk-top-inner">
+      <div class="mini-brand">
+        <img src="images/Gemini_Generated_Image_dsp07wdsp07wdsp0-removebg-preview.png" alt="Pearl Paradise Reisen Logo" class="logo-img">
+        <span class="mini-text">Pearl Paradise Reisen</span>
+      </div>
+      <a class="bk-btn bk-btn-ghost bk-btn-xs" href="javascript:history.back()">Zurück</a>
+    </div>
+  </div>
+
+  <!-- Context Header -->
+  <header class="bk-header">
+    <div class="bk-container bk-head-inner">
+      <div class="bk-context">
+        <div class="bk-kicker" id="bkType">Buchung</div>
+        <h1 id="bkTitle">Ausgewähltes Paket</h1>
+        <div class="bk-sub" id="bkDates">Reisedaten: –</div>
+      </div>
+      <div class="bk-summary">
+        <div class="bk-pill"><span>Typ</span><b id="bkTypeShort">–</b></div>
+        <div class="bk-pill"><span>Reiseroute/Ort</span><b id="bkRoute">–</b></div>
+        <div class="bk-pill"><span>Reisedaten</span><b id="bkDatesShort">–</b></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="bk-container bk-main">
+    <div class="bk-grid">
+      <!-- Form -->
+      <section class="bk-card bk-form-card bk-reveal" id="bookingCard">
+        <h2>Buchungsdetails</h2>
+        <form id="bookingForm" novalidate>
+          <div class="bk-row">
+            <label>Vorname
+              <input class="bk-input" name="firstName" required placeholder="Ihr Vorname">
+            </label>
+            <label>Nachname
+              <input class="bk-input" name="lastName" required placeholder="Ihr Nachname">
+            </label>
+          </div>
+
+          <div class="bk-row">
+            <label>E-Mail
+              <input class="bk-input" type="email" name="email" required placeholder="name@example.com">
+            </label>
+            <label>Telefon / WhatsApp
+              <input class="bk-input" name="phone" required placeholder="+94 …">
+            </label>
+          </div>
+
+          <div class="bk-row">
+            <label>Nationalität
+              <input class="bk-input" name="nationality" placeholder="z. B. Deutsch">
+            </label>
+            <label>Anzahl Reisende
+              <div class="bk-row tight">
+                <input class="bk-input" type="number" min="1" name="adults" placeholder="Erwachsene" required>
+                <input class="bk-input" type="number" min="0" name="children" placeholder="Kinder">
+              </div>
+            </label>
+          </div>
+
+          <div class="bk-row">
+            <label>Gewünschte Reisedaten (Anreise – Abreise)
+              <div class="bk-row tight">
+                <input class="bk-input" type="date" name="dateFrom" required>
+                <input class="bk-input" type="date" name="dateTo" required>
+              </div>
+            </label>
+            <label>Sonderwünsche
+              <input class="bk-input" name="special" placeholder="z. B. Hotelklasse 4/5*, Walbeobachtung hinzufügen …">
+            </label>
+          </div>
+
+          <label class="bk-consent">
+            <input type="checkbox" required>
+            <span>Ich stimme den <a href="#" target="_blank">AGB</a> und der <a href="#" target="_blank">Datenschutzerklärung</a> zu.</span>
+          </label>
+
+          <div class="bk-actions">
+            <button class="bk-btn bk-btn-ghost" type="button" id="enquireBtn">Unverbindlich anfragen</button>
+            <button class="bk-btn bk-btn-teal" type="submit" id="confirmBtn">Buchung bestätigen</button>
+          </div>
+
+          <p id="bkResult" class="bk-result" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <!-- Help / Alternatives -->
+      <aside class="bk-card bk-help bk-reveal">
+        <h3>Alternative Kontaktmöglichkeiten</h3>
+        <div class="bk-kv">
+          <b>Notfallnummer</b><span><a href="tel:+94000000000">+94 00 000 0000</a></span>
+          <b>WhatsApp</b><span><a target="_blank" href="https://wa.me/94000000000">+94 00 000 0000</a></span>
+          <b>E-Mail</b><span><a href="mailto:info@pearlparadise-reisen.xx">info@pearlparadise-reisen.xx</a></span>
+        </div>
+
+        <div class="bk-cta-row">
+          <a class="bk-btn bk-btn-teal" href="tel:+94000000000">📞 Anrufen</a>
+          <a class="bk-btn bk-btn-ghost" target="_blank" href="https://wa.me/94000000000">💬 WhatsApp</a>
+          <a class="bk-btn bk-btn-ghost" href="mailto:info@pearlparadise-reisen.xx">✉️ E-Mail</a>
+        </div>
+
+        <div class="bk-info">
+          <p>Sie können auch ohne Online-Buchung telefonisch oder per Chat buchen. Wir senden Ihnen dann ein Angebot und bestätigen Ihre Reise.</p>
+        </div>
+
+        <!-- Static map placeholder -->
+        <div class="bk-map">
+         <div class="map-canvas map-embed"> 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4047293.6533534937!2d78.0641899698368!3d7.84943645833883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593cf65a1e9d%3A0xe13da4b400e2d38c!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1754808601305!5m2!1sen!2slk" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+         </div>
+          <small>Hier kann später Google Maps / OpenStreetMap eingebunden werden.</small>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Success screen -->
+    <section id="successScreen" class="bk-success" hidden>
+      <div class="bk-card bk-center">
+        <div class="bk-check">✓</div>
+        <h2>Wir haben Ihre Daten erhalten.</h2>
+        <p>Vielen Dank! Wir melden uns in Kürze mit Ihrem Angebot bzw. Ihrer Buchungsbestätigung.</p>
+        <div class="bk-cta-row">
+          <a class="bk-btn bk-btn-teal" href="index.html">Zur Startseite</a>
+          <a class="bk-btn bk-btn-ghost" href="services.html">Weitere Leistungen</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bk-footer">
+    <div class="bk-container bk-foot-inner">
+      <div class="mini-brand">
+        <img src="images/Gemini_Generated_Image_dsp07wdsp07wdsp0-removebg-preview.png" alt="Pearl Paradise Reisen Logo" class="logo-img">
+        <span class="mini-text">Pearl Paradise Reisen</span>
+      </div>
+      <div class="bk-copy">© 2025 Pearl Paradise Reisen</div>
+    </div>
+  </footer>
+
+  <script src="booking.js"></script>
+</body>
+</html>
