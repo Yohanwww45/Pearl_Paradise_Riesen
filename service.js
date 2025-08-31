@@ -66,3 +66,34 @@ tabs.forEach(tab => {
     }
   });
 
+  function initMainSlider() {
+  const slides = document.querySelectorAll('.main-slider .slide');
+  const nextBtn = document.querySelector('.main-slider .next');
+  const prevBtn = document.querySelector('.main-slider .prev');
+  let index = 0;
+
+  const showSlide = (i) => {
+    slides.forEach(s => s.classList.remove('active'));
+    slides[i].classList.add('active');
+  };
+
+  nextBtn.addEventListener('click', () => {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide(index);
+  });
+
+  setInterval(() => {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }, 5000);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initMainSlider();
+});
+
