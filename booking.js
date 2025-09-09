@@ -88,28 +88,36 @@ form.addEventListener('submit', async (e) => {
   };
 
   try {
-    // ---- LIVE: send to your backend to email site owner ----
-    // const res = await fetch(BOOKING_API_URL, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    //   body: JSON.stringify(payload)
-    // });
-    // const json = await res.json();
-    // if (!res.ok || !(json.ok || json.success)) throw new Error(json.error || 'Senden fehlgeschlagen');
+    const data = Object.fromEntries(new FormData(form).entries());
 
-    // ---- DEMO: no backend yet? Simulate network ----
-    await new Promise(r => setTimeout(r, 700));
+    const params = {
+      tour_title: $('#bkTitle').textContent,
+      tour_route: $('#bkRoute').textContent,
+      tour_dates: $('#bkDatesShort').textContent,
+      first_name: data.firstName,
+      last_name: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      nationality: data.nationality || '',
+      adults: data.adults,
+      children: data.children,
+      date_from: data.dateFrom,
+      date_to: data.dateTo,
+      special: data.special || ''
+   };
 
-    // Success UI
-    $('#bookingCard').hidden = true;
-    $('#successScreen').hidden = false;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    result.textContent = '';
+   await emailjs.send('service_2wxmu4a', 'template_3m0djsv', params);
 
+   // Success UI
+   $('#bookingCard').hidden = true;
+   $('#successScreen').hidden = false;
+   window.scrollTo({ top: 0, behavior: 'smooth' });
+   result.textContent = '';
   } catch (err) {
     console.error(err);
-    result.textContent = 'Leider gab es ein Problem beim Senden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns per Telefon/WhatsApp.';
+    result.textContent = 'Leider gab es ein Problem beim Senden. Bitte versuchen Sie es erneut.';
   } finally {
-    currentIntent = 'confirm'; // reset
-  }
+   currentIntent = 'confirm';
+ }
+
 });
