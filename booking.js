@@ -59,52 +59,57 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
-  // gather raw form fields
+  // Build payload
   const data = Object.fromEntries(new FormData(form).entries());
-
-  // OPTIONAL: include context in the submission so it lands in your email too
-  // (uncomment if you want title/route/dates in the email payload)
-  // data.__context = JSON.stringify({
-  //   type: $('#bkTypeShort').textContent,
-  //   title: $('#bkTitle').textContent,
-  //   route: $('#bkRoute').textContent,
-  //   dates: $('#bkDatesShort').textContent,
-  //   intent: currentIntent
-  // });
+  const payload = {
+    intent: currentIntent,                           // "confirm" or "enquire"
+    context: {
+      type: $('#bkTypeShort').textContent,
+      title: $('#bkTitle').textContent,
+      route: $('#bkRoute').textContent,
+      dates: $('#bkDatesShort').textContent
+    },
+    customer: {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      nationality: data.nationality || ''
+    },
+    party: {
+      adults: Number(data.adults || 0),
+      children: Number(data.children || 0)
+    },
+    travel: {
+      from: data.dateFrom,
+      to: data.dateTo
+    },
+    special: data.special || ''
+  };
 
   try {
-    // --- FORMSPREE API CALL ---
-    const res = await fetch("https://formspree.io/f/mblawlgg", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      }
-    });
+    // ---- LIVE: send to your backend to email site owner ----
+    // const res = await fetch(BOOKING_API_URL, {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    //   body: JSON.stringify(payload)
+    // });
+    // const json = await res.json();
+    // if (!res.ok || !(json.ok || json.success)) throw new Error(json.error || 'Senden fehlgeschlagen');
 
-    if (!res.ok) throw new Error("Send error");
+    // ---- DEMO: no backend yet? Simulate network ----
+    await new Promise(r => setTimeout(r, 700));
 
-    // Success UI → hide form, show success screen with bank details
-    document.getElementById('bookingCard').hidden = true;
-    document.getElementById('successScreen').hidden = false;
+    // Success UI
+    $('#bookingCard').hidden = true;
+    $('#successScreen').hidden = false;
     window.scrollTo({ top: 0, behavior: 'smooth' });
     result.textContent = '';
 
   } catch (err) {
     console.error(err);
-    result.textContent = 'Leider gab es ein Problem beim Senden. Bitte versuchen Sie es erneut.';
+    result.textContent = 'Leider gab es ein Problem beim Senden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns per Telefon/WhatsApp.';
+  } finally {
+    currentIntent = 'confirm'; // reset
   }
 });
-
-
-const fromEl = document.querySelector('input[name="dateFrom"]');
-const toEl   = document.querySelector('input[name="dateTo"]');
-function updateDatesChip() {
-  const from = fromEl.value;
-  const to   = toEl.value;
-  const full = (from && to) ? `${from} – ${to}` : (from ? `ab ${from}` : '–');
-  document.getElementById('bkDates').textContent = `Travel dates: ${full}`;
-  document.getElementById('bkDatesShort').textContent = full;
-}
-[fromEl, toEl].forEach(el => el.addEventListener('change', updateDatesChip));
