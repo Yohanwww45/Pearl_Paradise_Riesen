@@ -151,6 +151,55 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--txt)
 .cards[hidden]{display:none}
 .show{display:grid}
 
+/* Scope all styles to the Villa tab only */
+#villapakete .villa-info { padding: 16px; }
+
+#villapakete h3 { margin: 0 0 10px; }
+#villapakete h4 { margin: 16px 0 8px; }
+
+#villapakete .price-list,
+#villapakete .bullets {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 14px;
+}
+
+#villapakete .price-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  margin-bottom: 8px;
+}
+
+#villapakete .price-list .price { font-weight: 800; }
+
+#villapakete .bullets li {
+  position: relative;
+  padding-left: 18px;
+  margin: 6px 0;
+  color: var(--txt);
+}
+#villapakete .bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #0ea5e9;
+}
+
+#villapakete .villa-cta .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+
+
 /* Footer socials (scoped) */
 .footer .socials {
   display: flex;

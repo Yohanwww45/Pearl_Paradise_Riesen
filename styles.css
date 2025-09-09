@@ -281,3 +281,45 @@ iframe {aspect-ratio: 16 / 9; width: 100%; height: auto;}
   outline-offset: 2px;
 }
 
+/* Card footer row */
+.pricebar, .bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Call-to-action row for Mehr + Jetzt buchen */
+.cta-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Small pill buttons */
+.btn {
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.btn-ghost {
+  background: #fff;
+  border: 1px solid var(--border, #e5e7eb);
+  color: #6b21a8; /* purple for "Mehr" */
+}
+
+.btn-teal {
+  background: var(--teal, #14b8a6);
+  color: #fff;
+}
+
+.btn-teal:hover {
+  background: var(--teal-d, #0d9488);
+}

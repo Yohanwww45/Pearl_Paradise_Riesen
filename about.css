@@ -179,3 +179,43 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--txt)
   outline-offset: 2px;
 }
 
+
+/* Bigger avatars only in the partner/team cards */
+.section .team .avatar{
+  width: 120px;         /* was 72px */
+  height: 120px;        /* was 72px */
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 12px;  /* keep centered with a bit more spacing */
+}
+
+/* Give the card a touch more breathing room for the larger image */
+.section .team{
+  padding: 22px;        /* was 18px */
+}
+
+/* Desktop: make them a bit larger */
+@media (min-width: 900px){
+  .section .team .avatar{
+    width: 140px;
+    height: 140px;
+  }
+}
+
+
+/* Bigger avatar only inside .guide */
+.guide .avatar{
+  width: 150px;       /* increase size */
+  height: 150px;
+  margin: 0 auto 14px;
+}
+
+/* If you want it even bigger on desktop screens */
+@media (min-width: 900px){
+  .guide .avatar{
+    width: 180px;
+    height: 180px;
+  }
+}
+
