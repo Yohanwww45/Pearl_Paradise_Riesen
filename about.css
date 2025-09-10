@@ -139,6 +139,18 @@ body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--txt)
 /* Utilities */
 .muted{color:var(--muted)}
 
+
+.review-img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: contain; /* keeps whole screenshot visible */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.t-card {
+  padding: 8px; /* less padding since image fills space */
+}
+
+
 /* Footer socials (scoped) */
 .footer .socials {
   display: flex;

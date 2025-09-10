@@ -59,6 +59,6 @@ function slideVillaGallery() {
   villaSlider.style.transform = `translateX(-${villaIndex * 100}%)`;
 }
 
-setInterval(slideVillaGallery, 4000); // every 4 seconds
+setInterval(slideVillaGallery, 2000); // every 2 seconds
 
 
