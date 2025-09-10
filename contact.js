@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 //contact form with EmailJS
-const contactForm  = document.getElementById('contactForm');
+const contactForm  = document.getElementById('contactform');
 const contactResult = document.getElementById('formResult');
 
 contactForm.addEventListener('submit', async (e) => {

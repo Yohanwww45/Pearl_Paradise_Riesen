@@ -33,32 +33,35 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// simple form handler (no backend)
-const form = document.getElementById('contactForm');
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const data = Object.fromEntries(new FormData(form).entries());
-  document.getElementById('formResult').textContent =
-    `Danke, ${data.name || 'Reisefan'}! Wir melden uns per E-Mail.`;
-  form.reset();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.getElementById('villaSlider');
+  if (!slider) return;
+
+  const slides = slider.querySelectorAll('img');
+  if (slides.length <= 1) return; // nothing to slide
+
+  let idx = 0;
+  let timer;
+
+  function go() {
+    idx = (idx + 1) % slides.length;
+    slider.style.transform = `translateX(-${idx * 100}%)`;
+  }
+
+  function start() { timer = setInterval(go, 3000); }
+  function stop() { clearInterval(timer); }
+
+  // start + pause on hover
+  start();
+  slider.parentElement.addEventListener('mouseenter', stop);
+  slider.parentElement.addEventListener('mouseleave', start);
+
+  // (optional) jump to first on resize
+  window.addEventListener('resize', () => {
+    slider.style.transform = 'translateX(0)';
+    idx = 0;
+  });
 });
-
-// helper
-function scrollToId(id){
-  const el = document.getElementById(id);
-  if (el) window.scrollTo({ top: el.offsetTop - 10, behavior: 'smooth' });
-}
-
-
-const villaSlider = document.getElementById('villaSlider');
-const villaImages = villaSlider.querySelectorAll('img');
-let villaIndex = 0;
-
-function slideVillaGallery() {
-  villaIndex = (villaIndex + 1) % villaImages.length;
-  villaSlider.style.transform = `translateX(-${villaIndex * 100}%)`;
-}
-
-setInterval(slideVillaGallery, 2000); // every 2 seconds
 
 
