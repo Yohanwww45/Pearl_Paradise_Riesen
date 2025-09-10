@@ -121,7 +121,7 @@
   <section class="section">
     <div class="container grid-2">
       <div class="card reveal">
-        <h3>Nachricht senden</h3>
+        <h3>Nachricht senden (Gestalten Sie Ihren Urlaub nach Ihren Wünschen.)</h3>
         <form id="contactForm" enctype="multipart/form-data" novalidate>
           <div class="grid">
             <label> Name
@@ -145,10 +145,6 @@
             <textarea class="input" rows="5" name="message" placeholder="Teilen Sie uns Reisedaten, Personenanzahl, Hotelklasse usw. mit …" required></textarea>
           </label>
 
-          <label class="file"> Datei hochladen (optional)
-            <input type="file" name="file" />
-          </label>
-
           <label class="consent">
             <input type="checkbox" required />
             <span>Ich stimme der <a href="#" target="_blank">Datenschutzerklärung</a> zu.</span>
@@ -163,23 +159,22 @@
         </form>
       </div>
 
-      <!-- FAQ -->
-      <div class="card reveal">
+       <!-- FAQ -->
+    <div class="card reveal">
         <h3>FAQ (häufige Fragen)</h3>
         <div class="faq">
-          <button class="faq-q">Wie schnell bekomme ich ein Angebot?</button>
-          <div class="faq-a">In der Regel innerhalb von 12–24 Stunden. Bei komplexen Anfragen kann es etwas länger dauern.</div>
+            <button class="faq-q">Wie schnell bekomme ich ein Angebot?</button>
+            <div class="faq-a">In der Regel innerhalb von 12–24 Stunden. Bei komplexen Anfragen kann es etwas länger dauern.</div>
 
-          <button class="faq-q">Ist die Anfrage unverbindlich?</button>
-          <div class="faq-a">Ja, Ihre Anfrage ist vollkommen unverbindlich und kostenlos.</div>
+            <button class="faq-q">Ist die Anfrage unverbindlich?</button>
+            <div class="faq-a">Ja, Ihre Anfrage ist vollkommen unverbindlich und kostenlos.</div>
 
-          <button class="faq-q">Kann ich einzelne Leistungen austauschen?</button>
-          <div class="faq-a">Natürlich. Wir passen Hotels, Aktivitäten, Dauer und Transport nach Ihren Wünschen an.</div>
+            <button class="faq-q">Kann ich einzelne Leistungen austauschen?</button>
+            <div class="faq-a">Natürlich. Wir passen Hotels, Aktivitäten, Dauer und Transport nach Ihren Wünschen an.</div>
 
-          <button class="faq-q">Wie bezahle ich?</button>
-          <div class="faq-a">Anzahlung per Banküberweisung oder Karte, Restzahlung vor Ort oder nach Vereinbarung.</div>
+            <button class="faq-q">Wie bezahle ich?</button>
+            <div class="faq-a">Anzahlung per Banküberweisung oder Karte, Restzahlung vor Ort oder nach Vereinbarung.</div>
         </div>
-      </div>
     </div>
   </section>
 
@@ -193,6 +188,13 @@
     </div>
   </footer>
 
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function () {
+    emailjs.init('CePmrV8mk6hrXHCH6'); // e.g. CePmrV8mk6hrXHCH6
+  })();
+</script>
   <script src="contact.js"></script>
 </body>
 </html>
