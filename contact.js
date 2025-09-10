@@ -1,4 +1,4 @@
-const { contactForm } = require("./script");
+
 
 // Scroll reveal (simple, runs once)
 document.querySelectorAll('.reveal').forEach((el, i) => {
