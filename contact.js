@@ -1,3 +1,5 @@
+const { contactForm } = require("./script");
+
 // Scroll reveal (simple, runs once)
 document.querySelectorAll('.reveal').forEach((el, i) => {
   const obs = new IntersectionObserver(([e], o) => {
@@ -33,8 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-//contact form with EmailJS
-const contactForm  = document.getElementById('contactform');
 const contactResult = document.getElementById('formResult');
 
 contactForm.addEventListener('submit', async (e) => {
