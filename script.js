@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     idx = 0;
   });
 });
-//contact form with EmailJS
-export const contactForm = document.getElementById('contactform');
+
 
 
