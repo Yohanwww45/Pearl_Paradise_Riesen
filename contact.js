@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 const contactResult = document.getElementById('formResult');
-
+const form = document.getElementById('contactForm');
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   contactResult.textContent = 'Sende Ihre Nachricht …';
